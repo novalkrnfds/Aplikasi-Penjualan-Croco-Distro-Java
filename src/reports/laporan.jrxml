@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f392b045-d71d-43db-8d2a-e71c7417acdb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nota_bm" class="java.lang.String"/>
+	<parameter name="nota_dbm" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tbbarangmasuk.`no_nota` AS tbbarangmasuk_no_nota,
+     tbbarangmasuk.`idbrand` AS tbbarangmasuk_idbrand,
+     tbbrand.`namabrand` AS namabrand,
+     tbbarangmasuk.`idpetugas` AS tbbarangmasuk_idpetugas,
+     tbbarangmasuk.`tglmasuk` AS tbbarangmasuk_tglmasuk,
+     tbbarangmasuk.`total` AS tbbarangmasuk_total,
+     tbdetailbrgmasuk.`no_nota` AS tbdetailbrgmasuk_no_nota,
+     tbdetailbrgmasuk.`kodebarang` AS tbdetailbrgmasuk_kodebarang,
+     tbdetailbrgmasuk.`jumlah` AS tbdetailbrgmasuk_jumlah,
+     tbdetailbrgmasuk.`harga` AS tbdetailbrgmasuk_harga,
+     tbdetailbrgmasuk.`subtotal` AS tbdetailbrgmasuk_subtotal,
+     tbdetailbrgmasuk.`keterangan` AS tbdetailbrgmasuk_keterangan
+FROM
+     `tbbarangmasuk` tbbarangmasuk,
+     `tbdetailbrgmasuk` tbdetailbrgmasuk,
+     `tbbrand` tbbrand
+WHERE
+     tbbarangmasuk.`idbrand` = tbbrand.`idbrand`
+     and
+     tbbarangmasuk.`no_nota` = $P{nota_bm} and tbdetailbrgmasuk.`no_nota` = $P{nota_dbm}]]>
+	</queryString>
+	<field name="tbbarangmasuk_no_nota" class="java.lang.String"/>
+	<field name="tbbarangmasuk_idbrand" class="java.lang.String"/>
+	<field name="tbbarangmasuk_idpetugas" class="java.lang.String"/>
+	<field name="tbbarangmasuk_tglmasuk" class="java.sql.Date"/>
+	<field name="tbbarangmasuk_total" class="java.lang.Integer"/>
+	<field name="tbdetailbrgmasuk_no_nota" class="java.lang.String"/>
+	<field name="tbdetailbrgmasuk_kodebarang" class="java.lang.String"/>
+	<field name="tbdetailbrgmasuk_jumlah" class="java.lang.Integer"/>
+	<field name="tbdetailbrgmasuk_harga" class="java.lang.Integer"/>
+	<field name="tbdetailbrgmasuk_subtotal" class="java.lang.Integer"/>
+	<field name="tbdetailbrgmasuk_keterangan" class="java.lang.String"/>
+	<field name="namabrand" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bbc1398f-a1a5-4f29-ba70-4eac5defb1da" x="13" y="-1" width="164" height="52"/>
+				<textElement>
+					<font fontName="Arial" size="36" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CAST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86b44b19-638e-4273-82ae-414863b52004" x="13" y="51" width="232" height="29"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CROCO AND SKATE THEORY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="11932cd2-cb2e-4f4e-b755-41572824550c" x="569" y="51" width="215" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STRUK PEMBELIAN BARANG]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d189c0f2-e6af-457e-86a3-b92c190464f3" x="684" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="6934371e-9dba-4e1b-89c3-207589062398" x="13" y="0" width="771" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="343d7b2a-af91-4537-a5a4-53225653474e" x="13" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ae19d551-e7c8-4253-9c18-4ac3d7ca69b3" x="13" y="20" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA PETUGAS]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ccd7ed96-99bf-4eba-aa3b-e7700cafbcbc" x="126" y="20" width="206" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbbarangmasuk_idpetugas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="37cc278d-1c6c-4fc0-93b7-88c6042ba03d" x="571" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID BRAND]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="afe05472-835d-447e-80c8-24241f5c92dd" x="684" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbbarangmasuk_idbrand}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="38001b4c-ab80-478d-adef-fcc9038a0b47" x="48" y="66" width="107" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KODE BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="13c4b436-6bef-4785-a067-e5ed363155e0" x="155" y="66" width="115" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d89efff-3df7-4f4c-8d72-4e5962c03330" x="270" y="66" width="116" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HARGA BELI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a54f8173-c8ab-4eb7-ad97-202228e78b5d" x="386" y="66" width="133" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUB TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8e7bc353-2521-4ddb-a9fc-8d167a6ff290" x="519" y="66" width="134" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KETERANGAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0ee8a97-3a87-4b74-bc76-a06494f05ab7" x="653" y="66" width="131" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL MASUK]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="87254066-8e6e-4c75-ab26-c9de6ea4ed8a" x="126" y="0" width="109" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nota_bm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="acfff750-0802-4590-a8d8-9df789cdb06a" x="571" y="20" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA BRAND]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0999cd77-ecc4-4968-a798-ca33ae179566" x="684" y="20" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namabrand}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="84649ec1-b1f3-4ad5-8071-4ad3b41e0852" x="671" y="0" width="13" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd0fc75d-4bbf-4e39-bcef-f5d8a13d2429" x="671" y="20" width="13" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="a24da17c-9b6b-4ea5-aa36-0b882a277c04" x="13" y="53" width="771" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="049afb01-9e34-4d72-b354-addf76bd9c38" x="113" y="0" width="13" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bff0adae-98e7-4ad7-a7fe-d0ca3f0789ae" x="113" y="20" width="13" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad313213-16d8-4e23-9ace-778e7fbdab2c" x="13" y="66" width="35" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="30667e5c-a4b2-413e-9e93-2921142f2c91" x="13" y="0" width="35" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bc62499-37fa-4cf7-a6d4-2bfcd1642bf8" x="48" y="0" width="107" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbdetailbrgmasuk_kodebarang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cefb000c-e416-4fc4-aee0-b14f06820ab5" x="155" y="0" width="115" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbdetailbrgmasuk_jumlah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1b586603-21a4-4e26-8a0d-a5d522ea36ca" x="270" y="0" width="116" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbdetailbrgmasuk_harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="38cb7bbc-d385-4cd4-9a8c-ef1e03854907" x="386" y="0" width="133" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbdetailbrgmasuk_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b030edda-8837-4fe4-a533-aa861ac493f5" x="519" y="0" width="134" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbdetailbrgmasuk_keterangan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eb6f28cd-f367-4783-b498-cf90b8e3810a" x="653" y="0" width="131" height="20"/>
+				<box topPadding="0" leftPadding="0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbbarangmasuk_tglmasuk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="172f1624-5e3f-4c6c-b2e3-60df0ce1a681" x="540" y="0" width="100" height="30"/>
+				<textElement textAlignment="Right">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f85b5a91-7186-407f-9c4b-bd2e3755aa62" x="653" y="0" width="131" height="30"/>
+				<textElement textAlignment="Right">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbbarangmasuk_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8b46f32d-1c4e-4e02-91fc-5bc24d0ae969" x="640" y="0" width="13" height="30"/>
+				<textElement textAlignment="Right">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
